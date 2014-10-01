@@ -33,6 +33,9 @@ void loop()
     if (degreesF < 70){
     digitalWrite(LEDpin, HIGH);
   }
+  else{ 
+digitalWrite(LEDpin, LOW);
+}
 
 
   // These statements will print lines of data like this:
