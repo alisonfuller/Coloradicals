@@ -5,7 +5,7 @@ Background/Introduction/Client Information
 
 Design Requirements
 
-Our temperature sensor must be able to determine when the temperature inside hits below 50 degrees fahrenheit, and above 68 degrees fahrenheit. These lower and upper limits are common ranges for most plants grown inside a greenhouse and making our device to keep the temperature within this range would allow for the plants to grow in an ideal environment during the whole year.  
+  Our temperature sensor must be able to determine when the temperature inside hits below 50 degrees fahrenheit, and above 68 degrees fahrenheit. These lower and upper limits are common ranges for most plants grown inside a greenhouse and making our device to keep the temperature within this range would allow for the plants to grow in an ideal environment during the whole year.  
 
 Design Alternatives
   
