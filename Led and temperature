@@ -1,10 +1,11 @@
+#include <LiquidCrystal.h>
 int temperaturePin = 0;     
 int LEDpin = 13;
-//LiquidCrystal lcd();
+LiquidCrystal lcd(2,3,4,5,11,12);
 
 void setup()
 {
-  //lcd.begin(columns,rows);
+  lcd.begin(16,2);
   pinMode(LEDpin, OUTPUT);
   Serial.begin(9600);
 }
@@ -16,20 +17,19 @@ void loop()
   voltage = getVoltage(temperaturePin);
   degreesC = (voltage - 0.5) * 100.0;
   degreesF = degreesC * (9.0/5.0) + 32.0;
-  /*Sets the starting position of the lcd and writes the temperature at 0,1
+  //Sets the starting position of the lcd and writes the temperature at 0,1
   lcd.setCursor(0,0);
   lcd.print("Degrees Fahrenheit: ");
   lcd.setCursor(0,1);
   lcd.print(degreesF, DEC);
-  lcd.print((char)223); prints the 'degree' symbol
+  lcd.print((char)223); //prints the 'degree' symbol
   lcd.print("F");
-  Serial.print("voltage: ");
+  /*Serial.print("voltage: ");
   Serial.print(voltage);
   Serial.print("  deg C: ");
   Serial.print(degreesC);
-  */
   Serial.print("  deg F: ");
-  Serial.println(degreesF);
+  Serial.println(degreesF);*/
   if (degreesF>75||degreesF<45)
   {
     digitalWrite(LEDpin, HIGH);
