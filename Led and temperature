@@ -1,4 +1,9 @@
 #include <LiquidCrystal.h>
+int enablePin=6;
+int clkWisePin=7; //pin for controlling motor in clock-wise direction
+int cntrClkPin=8; //pin for controlling motor in counter clock-wise direction
+int mtrSwitchPin=9;
+int potPin=10;
 int temperaturePin = 0;     
 int LEDpin = 13;
 LiquidCrystal lcd(2,3,4,5,11,12);
@@ -7,6 +12,10 @@ void setup()
 {
   lcd.begin(16,2);
   pinMode(LEDpin, OUTPUT);
+  pinMode(clkWisePin, OUTPUT);
+  pinMode(cntrClkPin, OUTPUT);
+  pinMode(enablePin, OUTPUT);
+  pinMode(mtrSwitchPin, OUTPUT);
   Serial.begin(9600);
 }
 
@@ -17,7 +26,7 @@ void loop()
   voltage = getVoltage(temperaturePin);
   degreesC = (voltage - 0.5) * 100.0;
   degreesF = degreesC * (9.0/5.0) + 32.0;
-  //Sets the starting position of the lcd and writes the temperature at 0,1
+  //lines 30-35 Sets the starting position of the lcd and writes the temperature at 0,1
   lcd.setCursor(0,0);
   lcd.print("Degrees Fahrenheit: ");
   lcd.setCursor(0,1);
