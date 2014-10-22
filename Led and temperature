@@ -4,24 +4,21 @@ int clkWisePin=7; //pin for controlling motor in clock-wise direction
 int cntrClkPin=8; //pin for controlling motor in counter clock-wise direction
 int mtrSwitchPin=9;
 int potPin=10;
-int temperaturePin = 0;     
-int LEDpin = 13;
+int temperaturePin=0;
 LiquidCrystal lcd(2,3,4,5,11,12);
-
 void setup()
 {
   lcd.begin(16,2);
-  pinMode(LEDpin, OUTPUT);
   pinMode(clkWisePin, OUTPUT);
   pinMode(cntrClkPin, OUTPUT);
   pinMode(enablePin, OUTPUT);
   pinMode(mtrSwitchPin, OUTPUT);
   Serial.begin(9600);
 }
-
-
 void loop()
 {
+  int speed=analogRead(potPin)/4;
+  boolean reverse=digitalRead(mtrSwitchPin);
   float voltage, degreesC, degreesF;
   voltage = getVoltage(temperaturePin);
   degreesC = (voltage - 0.5) * 100.0;
@@ -33,27 +30,22 @@ void loop()
   lcd.print(degreesF, DEC);
   lcd.print((char)223); //prints the 'degree' symbol
   lcd.print("F");
-  /*Serial.print("voltage: ");
-  Serial.print(voltage);
-  Serial.print("  deg C: ");
-  Serial.print(degreesC);
-  Serial.print("  deg F: ");
-  Serial.println(degreesF);*/
   if (degreesF>75||degreesF<45)
   {
-    digitalWrite(LEDpin, HIGH);
   }
   else
-  { 
-    digitalWrite(LEDpin, LOW);
+  {
   }
   delay(500); 
   //lcd.clear(); clears the lcd and goes back through the loop
 }
-
-
 float getVoltage(int pin)
 {
-  
   return (analogRead(pin) * 0.004882814);
+}
+void setMotor(int speed, boolean reverse)
+{
+  analogWrite(enablePin, speed);
+  digitalWrite(clkWisePin, !reverse);
+  digitalWrite(cntrClkPin, reverse);
 }
