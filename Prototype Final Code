@@ -37,7 +37,7 @@ void loop()
   if (tempF < 70){
    // digitalWrite(LEDpin, HIGH);
    digitalWrite(motorPin, HIGH);
-   delay(5000);
+   delay(250);
  }
    else{ 
 //digitalWrite(LEDpin, LOW);
