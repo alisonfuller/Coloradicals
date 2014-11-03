@@ -1,24 +1,18 @@
+#include <Servo.h>
 #include <LiquidCrystal.h>
-int enablePin=6;
-int clkWisePin=7; //pin for controlling motor in clock-wise direction
-int cntrClkPin=8; //pin for controlling motor in counter clock-wise direction
-int mtrSwitchPin=9;
-int potPin=10;
 int temperaturePin=0;
+int servoPin=9;
+Servo servo;
+int angle=0;
 LiquidCrystal lcd(2,3,4,5,11,12);
 void setup()
 {
   lcd.begin(16,2);
-  pinMode(clkWisePin, OUTPUT);
-  pinMode(cntrClkPin, OUTPUT);
-  pinMode(enablePin, OUTPUT);
-  pinMode(mtrSwitchPin, OUTPUT);
+  servo.attach(servoPin);
   Serial.begin(9600);
 }
 void loop()
 {
-  int speed=analogRead(potPin)/4;
-  boolean reverse=digitalRead(mtrSwitchPin);
   float voltage, degreesC, degreesF;
   voltage = getVoltage(temperaturePin);
   degreesC = (voltage - 0.5) * 100.0;
@@ -30,11 +24,21 @@ void loop()
   lcd.print(degreesF, DEC);
   lcd.print((char)223); //prints the 'degree' symbol
   lcd.print("F");
-  if (degreesF>75||degreesF<45)
+  if (degreesF>75)//if upper limit of temp range is broken motor will open vent
   {
+    for(angle=0; angle<180; angle++)
+    {
+      servo.write(angle);
+      delay(15);
+    }
   }
-  else
+  else if(degreesF<45)//if lower limit of temp range is broken motor will close vent
   {
+    for(angle=180; angle>0; angle--)
+    {
+      servo.write(angle);
+      delay(15);
+    }
   }
   delay(500); 
   //lcd.clear(); clears the lcd and goes back through the loop
@@ -42,10 +46,4 @@ void loop()
 float getVoltage(int pin)
 {
   return (analogRead(pin) * 0.004882814);
-}
-void setMotor(int speed, boolean reverse)
-{
-  analogWrite(enablePin, speed);
-  digitalWrite(clkWisePin, !reverse);
-  digitalWrite(cntrClkPin, reverse);
 }
