@@ -26,7 +26,7 @@ void loop()
   lcd.print("F");
   if (degreesF>75)//if upper limit of temp range is broken motor will open vent
   {
-    for(angle=0; angle<180; angle++)
+    for(angle=0; angle<90; angle++)
     {
       servo.write(angle);
       delay(15);
@@ -34,7 +34,7 @@ void loop()
   }
   else if(degreesF<45)//if lower limit of temp range is broken motor will close vent
   {
-    for(angle=180; angle>0; angle--)
+    for(angle=90; angle>0; angle--)
     {
       servo.write(angle);
       delay(15);
