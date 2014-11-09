@@ -21,5 +21,57 @@ Timeline
   *this can also be adapted from what we already have*
   
 Appendix
+
   Code: Curently we have a code that turns a motor on and off in response to temperature as well as a code for our servo motor. For our final project these codes will be combined and altered.
+  
     Temperature Changing Code:
+
+    #include <LiquidCrystal.h>
+
+int tempPin = 0;
+int lightPin = 1;
+int motorPin = 13;
+
+//                BS  E  D4 D5  D6 D7
+LiquidCrystal lcd(7, 8, 9, 10, 11, 12);
+
+void setup() 
+{
+  lcd.begin(16, 2);
+  pinMode(motorPin, OUTPUT);
+}
+
+void loop()
+{
+  // Display Temperature in C
+  int tempReading = analogRead(tempPin);
+  float tempVolts = tempReading * 5.0 / 1024.0;
+  float tempC = (tempVolts - 0.5) * 100.0;
+  float tempF = tempC * 9.0 / 5.0 + 32.0;
+  //         ----------------
+  lcd.print("Temp        F  ");
+  lcd.setCursor(6, 0);
+  lcd.print(tempF);
+  
+  // Display Light on second row
+  int lightReading = analogRead(lightPin);
+  lcd.setCursor(0, 1);
+  //         ----------------
+  lcd.print("Light           ");  
+  lcd.setCursor(6, 1);
+  lcd.print(lightReading);
+  delay(500);
+  if (tempF < 70){
+   // digitalWrite(LEDpin, HIGH);
+   digitalWrite(motorPin, HIGH);
+   delay(250);
+ }
+   else{ 
+//digitalWrite(LEDpin, LOW);
+digitalWrite(motorPin, LOW);
+}
+}
+
+  Servo Code:
+  
+  
