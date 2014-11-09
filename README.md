@@ -21,42 +21,17 @@ Budget and Bill Of Materials
 
 
 
-Parts
+Parts and Prices
  
-Price
+Vent from Resource  $9.21
+LCD from Sparkfun  $38.32
+ Male to Female adapters $3.99
+ Servo Motor from Sparkfun $31.99
  
-
-Vent from Resource
+ Total  $83.51
  
-$9.21
+Remaining  $291.49
  
-
-LCD from Sparkfun
- 
-$38.32
- 
-
-Male to Female adapters
- 
-$3.99
- 
-
-Servo Motor from Sparkfun
- 
-$31.99
- 
-
-Total
- 
-$83.51
- 
-
-Remaining
- 
-$291.49
- 
-
-
   
 Timeline
 
