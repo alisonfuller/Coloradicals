@@ -24,9 +24,12 @@ Budget and Bill Of Materials
 Parts and Prices
  
 Vent from Resource  $9.21
+
 LCD from Sparkfun  $38.32
- Male to Female adapters $3.99
- Servo Motor from Sparkfun $31.99
+
+Male to Female adapters $3.99
+
+Servo Motor from Sparkfun $31.99
  
  Total  $83.51
  
