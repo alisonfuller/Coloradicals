@@ -11,3 +11,15 @@ Design Requirements
 Design Alternatives
   
   For our project, our team has considered many different alternatives. In our brainstorming, we considered both solar and battery options as a power source for our device. We have also dicussed adding more sensors such as a carbon dioxide and humidity sensor in order to give the device more functionality. Regarding the component that causes the vents to open and close we have thought of a few options. The first option was to have a wheel attached to the motor with an arm attached to it, also attached to the bar along the vent shades, that would be able to open and close the ents as long as the motor was able to move in two directions (clockwise and counterclockwise). Another option would be to use a motor that moves a track with gears forwards and backwards that would be attached to the bar along the vent shades. For our final option we thought of two motors that used a pulley system to move the vents, with the motors only moving in one direction each. Each motor would either pull the vents closed or open them. Next, we considered incorporating a component that would be able to send the client notifications through an app or text message in order to alert the client when the temperature is above or below the set temperature parameters so the client can manually open or close the vents. There are different kinds of motors that we could use for some of the options in order to move the vent shades. One option is to use a step motor that would be able to move in increments of 1.8 degress per pulse, giving precise aounts of movement. Another option would be to use a gear motor that would have more torque than other motors, but would need to have a set time that the motor runs rather than a specific amount of degrees that it isrotated. Our last consideration was to either use our client's existing vent and adapt our device to control it, or use another vent and replace the existing one. If we are to use a new vent our device would be able to be more compatible with the new vent.
+  
+Budget and Bill Of Materials
+  
+  *We just need to pull this information from our slide show*
+  
+Timeline
+
+  *this can also be adapted from what we already have*
+  
+Appendix
+  Code: Curently we have a code that turns a motor on and off in response to temperature as well as a code for our servo motor. For our final project these codes will be combined and altered.
+    Temperature Changing Code:
