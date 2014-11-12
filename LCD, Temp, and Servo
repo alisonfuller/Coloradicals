@@ -4,6 +4,8 @@ int temperaturePin=0;
 int servoPin=9;
 Servo servo;
 int angle=0;
+int tempRangeH=75; //the max the temp will be before vent opens
+int tempRangeL=45; //the min the temp will be before vent closes
 LiquidCrystal lcd(2,3,4,5,11,12);
 void setup()
 {
