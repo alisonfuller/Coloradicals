@@ -3,13 +3,21 @@
 int temperaturePin=0;
 int servoPin=9;
 Servo servo;
-int angle=0;
+int angle=0; //controls angle of servo motor
+int hButton=6; //button for max temp control
+int lButton=7; //button for min temp control
 int tempRangeH=75; //the max the temp will be before vent opens
+int hButtonState=0; //max temp button state
+int lButtonState=0; //min temp button state
+int hLastState=0; //previous button state
+int lLastState=0; //previous button state
 int tempRangeL=45; //the min the temp will be before vent closes
 LiquidCrystal lcd(2,3,4,5,11,12);
 void setup()
 {
-  lcd.begin(16,2);
+  lcd.begin(16,4);
+  pinMode(hButton, INPUT);
+  pinMode(lButton, INPUT);
   servo.attach(servoPin);
   Serial.begin(9600);
 }
@@ -26,6 +34,12 @@ void loop()
   lcd.print(degreesF, DEC);
   lcd.print((char)223); //prints the 'degree' symbol
   lcd.print("F");
+  lcd.setCursor(0,2);
+  lcd.print("Range: ");
+  lcd.print(tempRangeH);
+  lcd.print("to ");
+  lcd.print(tempRangeL);
+  lcd.print("If max temp hits 85 and/or min temp hits 35 temp will reset");
   if (degreesF>75)//if upper limit of temp range is broken motor will open vent
   {
     for(angle=0; angle<90; angle++)
