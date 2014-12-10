@@ -21,30 +21,19 @@ Testing and Analysis
   Our design had two critical parts, the mechanical aspect of the shutter and motor system along with the electrical and coding component. When designing the shutter and motor system, we consider several different types of sytems such as a pulley system and using a linear actuator. In our prototype, we designed a pulley system for our vent. This design ultimately fell short when testing and trying to move the shutter in two directions. With this in mind, team decided to design a system using a servo that would be able to move two directions with more ease. The process of picking a servo for our design required research and calculating the torque that would be applied to the servo.....
   
 Budget and Bill Of Materials
+| Product                       | Price  |
+|-------------------------------|--------|
+| Vent from Resource            | $9.21  |
+| Box from Resource             | $2.00  |
+| LCD from Sparkfun             | $30.32 |
+| Male to Female Adapters       | $3.99  |
+| Servo Motor from Sparkfun     | $31.99 |
+| Temperature & Humidity Sensor | $8.00  |
+| Knob                          | $2.95  |
+| Arduino Pro Mini              | $9.95  |
+| Solder-able Breadboard        | $4.95  |
+| 4x 9V Batteries               | $15.00 |
 
-Parts and Prices
- 
-Vent from Resource  $9.21
-
-Box from Resource: $2.00
-
-LCD from Sparkfun  $30.32
-
-Male to Female adapters $3.99
-
-Servo Motor from Sparkfun $31.99
-
-Temperature & Humidity Sensor: $8.00
-
-Knob $2.95
-
-Arduino Pro Mini $9.95
-
-Solder-able Breadboard: $4.95
-
-4x 9V Batteries: $15.00
-
- 
 Total: $138.36  
  
 Remaining  $236.64
