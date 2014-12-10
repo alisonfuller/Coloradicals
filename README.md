@@ -21,6 +21,7 @@ Testing and Analysis
   Our design had two critical parts, the mechanical aspect of the shutter and motor system along with the electrical and coding component. When designing the shutter and motor system, we consider several different types of sytems such as a pulley system and using a linear actuator. In our prototype, we designed a pulley system for our vent. This design ultimately fell short when testing and trying to move the shutter in two directions. With this in mind, team decided to design a system using a servo that would be able to move two directions with more ease. The process of picking a servo for our design required research and calculating the torque that would be applied to the servo.....
   
 Budget and Bill Of Materials
+
 | Product                       	| Price  	|
 |-------------------------------	|--------	|
 | Vent from Resource            	| $9.21  	|
