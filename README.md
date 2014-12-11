@@ -10,7 +10,7 @@ Design Requirements
   
 Design Alternatives
   
-  For our project, our team has considered many different alternatives. In our brainstorming, we considered both solar and battery options as a power source for our device. We have also dicussed adding more sensors such as a carbon dioxide and humidity sensor in order to give the device more functionality. Regarding the component that causes the vents to open and close we have thought of a few options. The first option was to have a wheel attached to the motor with an arm attached to it, also attached to the bar along the vent shades, that would be able to open and close the ents as long as the motor was able to move in two directions (clockwise and counterclockwise). Another option would be to use a motor that moves a track with gears forwards and backwards that would be attached to the bar along the vent shades. For our final option we thought of two motors that used a pulley system to move the vents, with the motors only moving in one direction each. Each motor would either pull the vents closed or open them. Next, we considered incorporating a component that would be able to send the client notifications through an app or text message in order to alert the client when the temperature is above or below the set temperature parameters so the client can manually open or close the vents. There are different kinds of motors that we could use for some of the options in order to move the vent shades. One option is to use a step motor that would be able to move in increments of 1.8 degress per pulse, giving precise aounts of movement. Another option would be to use a gear motor that would have more torque than other motors, but would need to have a set time that the motor runs rather than a specific amount of degrees that it isrotated. Our last consideration was to either use our client's existing vent and adapt our device to control it, or use another vent and replace the existing one. If we are to use a new vent our device would be able to be more compatible with the new vent.
+  For our project, our team has considered many different alternatives. In our brainstorming, we considered both solar and battery options as a power source for our device. We have also dicussed adding more sensors such as a carbon dioxide and humidity sensor in order to give the device more functionality. Regarding the component that causes the vents to open and close we have thought of a few options. The first option was to have a wheel attached to the motor with an arm attached to it, also attached to the bar along the vent shades, that would be able to open and close the vents as long as the motor was able to move in two directions (clockwise and counterclockwise). Another option would be to use a motor that moves a track with gears forwards and backwards that would be attached to the bar along the vent shades. For our final option we thought of two motors that used a pulley system to move the vents, with the motors only moving in one direction each. Each motor would either pull the vents closed or open them. Next, we considered incorporating a component that would be able to send the client notifications through an app or text message in order to alert the client when the temperature is above or below the set temperature parameters so the client can manually open or close the vents. There are different kinds of motors that we could use for some of the options in order to move the vent shades. One option is to use a step motor that would be able to move in increments of 1.8 degress per pulse, giving precise aounts of movement. Another option would be to use a gear motor that would have more torque than other motors, but would need to have a set time that the motor runs rather than a specific amount of degrees that it isrotated. Our last consideration was to either use our client's existing vent and adapt our device to control it, or use another vent and replace the existing one. If we are to use a new vent our device would be able to be more compatible with the new vent.
   
   Overview of Process
   
@@ -18,8 +18,11 @@ Design Alternatives
   
 Testing and Analysis
 
-  Our design had two critical parts, the mechanical aspect of the shutter and motor system along with the electrical and coding component. When designing the shutter and motor system, we consider several different types of sytems such as a pulley system and using a linear actuator. In our prototype, we designed a pulley system for our vent. This design ultimately fell short when testing and trying to move the shutter in two directions. With this in mind, team decided to design a system using a servo that would be able to move two directions with more ease. The process of picking a servo for our design required research and calculating the torque that would be applied to the servo. We measured the force to open the vent to be about 8.3 N and the approximate radius of a necessary arm to be around .05 meters. Knowing that the most torque would be applied to the servo when at 90 degrees, we calculated the torque to be around .425 Newton-meters based on the equation torque=(Force)(radius)sin(theta). The servo that we chose for our design allows for torque of 1.94 Newton-meters which allows for variance in vents for other models in the future. When testing our system with the servo, we found the vent was not moving as smoothly as desired. This lead to the creation of a small channel in the arm to allow for slight changes in the radius.
-    There was also testing involved in the creation of our code and circuitry. In the early stages of the design process we used LED lights to check our coding and circuitry of the sensors and the LCD screen. With the integration of the servo and through hole bread board, we tested each connection with a voltameter and tested our system using the power supply. 
+  Our design had two critical parts, the mechanical aspect of the shutter and motor system along with the electrical and coding component. When designing the shutter and motor system, we consider several different types of sytems such as a pulley system and using a linear actuator. In our prototype, we designed a pulley system for our vent. This design ultimately fell short when testing and trying to move the shutter in two directions. With this in mind, team decided to design a system using a servo that would be able to move two directions with more ease. The process of picking a servo for our design required research and calculating the torque that would be applied to the servo.....
+  
+Conclusion:
+
+  For our project we designed an automatic vent that would help regulate the temperature of a greenhouse. We made a vent and motor system that would be controlled by an arduino that we coded. The code and arduino were used to control the different aspects of our project ranging from the temperature sensor to the LED screen to the motor. All of these parts that the arduino controlled were stored inside of a box we manufactured to exactly match our needs. The way our project works is by detecting the temperature of the greenhouse and if it hits a set parameter it will cause the motor to rotate and open/close the vent. In the future we can improve our project by adding a CO2 sensor, solar powered batteries, or a way to communicate with the owner that would give him/her updates on if batteries need replacing or if the temperature has drastically changed. 
   
 Budget and Bill Of Materials
 
@@ -43,19 +46,92 @@ Remaining  $236.64
   
 Timeline
 
-
-
-![Final Timeline](https://cloud.githubusercontent.com/assets/8903031/5390229/bffe48f0-80c4-11e4-947a-a535bc3bda7e.png)
-
-
-
+  *this can also be adapted from what we already have*
   
 Appendix
 
-  Code: 
-Schematic:
+  Code: Curently we have a code that turns a motor on and off in response to temperature as well as a code for our servo motor. For our final project these codes will be combined and altered.
+  
+    Temperature Changing Code:
 
-CAD Drawings:
+    #include <LiquidCrystal.h>
 
-![Motor Up Close](https://cloud.githubusercontent.com/assets/8839851/5390127/3a7a616a-80c3-11e4-912e-c4b849dee82b.JPG)
+int tempPin = 0;
+int lightPin = 1;
+int motorPin = 13;
+
+//                BS  E  D4 D5  D6 D7
+LiquidCrystal lcd(7, 8, 9, 10, 11, 12);
+
+void setup() 
+{
+  lcd.begin(16, 2);
+  pinMode(motorPin, OUTPUT);
+}
+
+void loop()
+{
+  // Display Temperature in C
+  int tempReading = analogRead(tempPin);
+  float tempVolts = tempReading * 5.0 / 1024.0;
+  float tempC = (tempVolts - 0.5) * 100.0;
+  float tempF = tempC * 9.0 / 5.0 + 32.0;
+  //         ----------------
+  lcd.print("Temp        F  ");
+  lcd.setCursor(6, 0);
+  lcd.print(tempF);
+  
+  // Display Light on second row
+  int lightReading = analogRead(lightPin);
+  lcd.setCursor(0, 1);
+  //         ----------------
+  lcd.print("Light           ");  
+  lcd.setCursor(6, 1);
+  lcd.print(lightReading);
+  delay(500);
+  if (tempF < 70){
+   // digitalWrite(LEDpin, HIGH);
+   digitalWrite(motorPin, HIGH);
+   delay(250);
+ }
+   else{ 
+//digitalWrite(LEDpin, LOW);
+digitalWrite(motorPin, LOW);
+}
+}
+
+  Servo Code:
+      // Sweep
+// by BARRAGAN <http://barraganstudio.com> 
+// This example code is in the public domain.
+
+
+    #include <Servo.h> 
+ 
+Servo myservo;  // create servo object to control a servo 
+                // a maximum of eight servo objects can be created 
+ 
+int pos = 0;    // variable to store the servo position 
+ 
+void setup() 
+{ 
+  myservo.attach(9);  // attaches the servo on pin 9 to the servo object 
+} 
+ 
+ 
+void loop() 
+{ 
+  for(pos = 0; pos < 90; pos += 1)  // goes from 0 degrees to 180 degrees 
+  {                                  // in steps of 1 degree 
+    myservo.write(pos);              // tell servo to go to position in variable 'pos' 
+    delay(15);                       // waits 15ms for the servo to reach the position 
+  } 
+  for(pos = 90; pos>=1; pos-=1)     // goes from 180 degrees to 0 degrees 
+  {                                
+    myservo.write(pos);              // tell servo to go to position in variable 'pos' 
+    delay(15);                       // waits 15ms for the servo to reach the position 
+  } 
+}
+
+
   
