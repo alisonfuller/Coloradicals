@@ -43,7 +43,11 @@ Remaining  $236.64
   
 Timeline
 
-https://cloud.githubusercontent.com/assets/8903031/5390229/bffe48f0-80c4-11e4-947a-a535bc3bda7e.png
+
+
+![Final Timeline](https://cloud.githubusercontent.com/assets/8903031/5390229/bffe48f0-80c4-11e4-947a-a535bc3bda7e.png)
+
+
 
   
 Appendix
