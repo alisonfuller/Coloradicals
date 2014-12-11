@@ -18,7 +18,7 @@ Design Alternatives
   
 Testing and Analysis
 
-  Our design had two critical parts, the mechanical aspect of the shutter and motor system along with the electrical and coding component. When designing the shutter and motor system, we consider several different types of sytems such as a pulley system and using a linear actuator. In our prototype, we designed a pulley system for our vent. This design ultimately fell short when testing and trying to move the shutter in two directions. With this in mind, team decided to design a system using a servo that would be able to move two directions with more ease. The process of picking a servo for our design required research and calculating the torque that would be applied to the servo.....
+  Our design had two critical parts, the mechanical aspect of the shutter and motor system along with the electrical and coding component. When designing the shutter and motor system, we consider several different types of sytems such as a pulley system and using a linear actuator. In our prototype, we designed a pulley system for our vent. This design ultimately fell short when testing and trying to move the shutter in two directions. With this in mind, team decided to design a system using a servo that would be able to move two directions with more ease. The process of picking a servo for our design required research and calculating the torque that would be applied to the servo. We measured the force to open the vent to be about 8.3 N and the approximate radius of a necessary arm to be around .05 meters. Knowing that the most torque would be applied to the servo when at 90 degrees, we calculated the torque to be around .425 Newton-meters based on the equation torque=(Force)(radius)sin(theta). The servo that we chose for our design allows for torque of 1.94 Newton-meters which allows for variance in vents for other models in the future. When testing our system with the servo, we found the vent was not moving as smoothly as desired. This lead to the creation of a small channel in the 
   
 Budget and Bill Of Materials
 
@@ -46,88 +46,7 @@ Timeline
   
 Appendix
 
-  Code: Curently we have a code that turns a motor on and off in response to temperature as well as a code for our servo motor. For our final project these codes will be combined and altered.
-  
-    Temperature Changing Code:
-
-    #include <LiquidCrystal.h>
-
-int tempPin = 0;
-int lightPin = 1;
-int motorPin = 13;
-
-//                BS  E  D4 D5  D6 D7
-LiquidCrystal lcd(7, 8, 9, 10, 11, 12);
-
-void setup() 
-{
-  lcd.begin(16, 2);
-  pinMode(motorPin, OUTPUT);
-}
-
-void loop()
-{
-  // Display Temperature in C
-  int tempReading = analogRead(tempPin);
-  float tempVolts = tempReading * 5.0 / 1024.0;
-  float tempC = (tempVolts - 0.5) * 100.0;
-  float tempF = tempC * 9.0 / 5.0 + 32.0;
-  //         ----------------
-  lcd.print("Temp        F  ");
-  lcd.setCursor(6, 0);
-  lcd.print(tempF);
-  
-  // Display Light on second row
-  int lightReading = analogRead(lightPin);
-  lcd.setCursor(0, 1);
-  //         ----------------
-  lcd.print("Light           ");  
-  lcd.setCursor(6, 1);
-  lcd.print(lightReading);
-  delay(500);
-  if (tempF < 70){
-   // digitalWrite(LEDpin, HIGH);
-   digitalWrite(motorPin, HIGH);
-   delay(250);
- }
-   else{ 
-//digitalWrite(LEDpin, LOW);
-digitalWrite(motorPin, LOW);
-}
-}
-
-  Servo Code:
-      // Sweep
-// by BARRAGAN <http://barraganstudio.com> 
-// This example code is in the public domain.
-
-
-    #include <Servo.h> 
- 
-Servo myservo;  // create servo object to control a servo 
-                // a maximum of eight servo objects can be created 
- 
-int pos = 0;    // variable to store the servo position 
- 
-void setup() 
-{ 
-  myservo.attach(9);  // attaches the servo on pin 9 to the servo object 
-} 
- 
- 
-void loop() 
-{ 
-  for(pos = 0; pos < 90; pos += 1)  // goes from 0 degrees to 180 degrees 
-  {                                  // in steps of 1 degree 
-    myservo.write(pos);              // tell servo to go to position in variable 'pos' 
-    delay(15);                       // waits 15ms for the servo to reach the position 
-  } 
-  for(pos = 90; pos>=1; pos-=1)     // goes from 180 degrees to 0 degrees 
-  {                                
-    myservo.write(pos);              // tell servo to go to position in variable 'pos' 
-    delay(15);                       // waits 15ms for the servo to reach the position 
-  } 
-}
-
-
+  Code: 
+Schematic:
+CAD Drawings:
   
