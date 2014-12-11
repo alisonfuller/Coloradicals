@@ -43,6 +43,8 @@ Remaining  $236.64
   
 Timeline
 
+Coloradicals/Final Timeline.jpg
+
   *this can also be adapted from what we already have*
   
 Appendix
