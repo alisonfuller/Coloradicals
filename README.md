@@ -72,114 +72,114 @@ Appendix
 
   Code:
   
-  #include <LiquidCrystal.h>
-#include <Servo.h> 
-#include <Wire.h> 
-Servo myservo;
-byte fetch_humidity_temperature(unsigned int *p_Humidity, unsigned int *p_Temperature);
-
-#define TRUE 1
-#define FALSE 0
-
-//int tempPin = 0;
-int lightPin = 1;
-int encoderPin1 = 2;
-int encoderPin2 = 3;
-int angle = 0; 
-
-volatile int lastEncoded = 0;
-volatile long encoderValue = 70;
-
-long lastencoderValue = 0;
-
-int lastMSB = 0;
-int lastLSB = 0;
- 
-//                BS  E  D4 D5  D6 D7
-LiquidCrystal lcd(7, 8, 9, 10, 11, 12);
- 
-void setup() 
-{
-  myservo.attach(6);  // attaches the servo on pin 6 to the servo object
-  lcd.begin(16, 4);
-  pinMode(encoderPin1, INPUT); 
-  pinMode(encoderPin2, INPUT);
-
-  digitalWrite(encoderPin1, HIGH); //turn pullup resistor on
-  digitalWrite(encoderPin2, HIGH); //turn pullup resistor on
-
-  //call updateEncoder() when any high/low changed seen
-  //on interrupt 0 (pin 2), or interrupt 1 (pin 3) 
-  attachInterrupt(0, updateEncoder, CHANGE); 
-  attachInterrupt(1, updateEncoder, CHANGE);
-  
-  Wire.begin();
-   pinMode(4 , OUTPUT);
-   digitalWrite(4, HIGH); // this turns on the HIH3610
-   delay(5000);
-}
- 
-void loop()
-{
-  // Display Temperature in C
-  byte _status;
-  unsigned int H_dat, T_dat;
-  int RH, T_C, T_F;
-  _status = fetch_humidity_temperature(&H_dat, &T_dat);
-   RH = H_dat * 6.10e-3;
-   T_C = T_dat * 1.007e-2 - 40.0;
-   T_F = T_C* 9.0 / 5.0 + 32.0;
-  
-  //int tempReading = analogRead(tempPin);
-  //float tempVolts = tempReading * 5.0 / 1024.0;
-  //float tempC = (tempVolts - 0.5) * 100.0;
-  //int tempF = tempC * 9.0 / 5.0 + 32.0;
-  //         ----------------
-  
-  lcd.setCursor(0, 0);
-  lcd.print("Temp    F  ");
-  lcd.setCursor(5, 0);
-  lcd.print(T_F);
-  
-  //lcd.setCursor(10,0);
-  //lcd.print ("T_F ");
-  //lcd.setCursor (14,0);
-  //lcd.print (T_F);
-  
-  lcd.setCursor (0,3);
-  lcd.print ("Humidity    %");
-  lcd.setCursor (9,3);
-  lcd.print (RH);
-  
-  // Display Light on second row
-  int lightReading = analogRead(lightPin);
-  lcd.setCursor(0, 2);
-  //         ----------------
-  lcd.print("Light           ");  
-  lcd.setCursor(6, 2);
-  lcd.print(lightReading);
-  delay(500);
-  
-  //Display Display Set Temperaure in F
-  int setTemp =encoderValue;
-  lcd.setCursor(0, 1);
-  //
-  lcd.print("Set Temp    F");
-  lcd.setCursor(9, 1);
-  lcd.print(setTemp);
-  delay(1000);
-  if (T_F < setTemp)
-  {
+    #include <LiquidCrystal.h>
+    #include <Servo.h> 
+    #include <Wire.h> 
+    Servo myservo;
+    byte fetch_humidity_temperature(unsigned int *p_Humidity, unsigned int *p_Temperature);
+    
+    #define TRUE 1
+    #define FALSE 0
+    
+    //int tempPin = 0;
+    int lightPin = 1;
+    int encoderPin1 = 2;
+    int encoderPin2 = 3;
+    int angle = 0; 
+    
+    volatile int lastEncoded = 0;
+    volatile long encoderValue = 70;
+    
+    long lastencoderValue = 0;
+    
+    int lastMSB = 0;
+    int lastLSB = 0;
+     
+    //                BS  E  D4 D5  D6 D7
+    LiquidCrystal lcd(7, 8, 9, 10, 11, 12);
+     
+    void setup() 
+    {
+      myservo.attach(6);  // attaches the servo on pin 6 to the servo object
+      lcd.begin(16, 4);
+      pinMode(encoderPin1, INPUT); 
+      pinMode(encoderPin2, INPUT);
+    
+      digitalWrite(encoderPin1, HIGH); //turn pullup resistor on
+      digitalWrite(encoderPin2, HIGH); //turn pullup resistor on
+    
+      //call updateEncoder() when any high/low changed seen
+      //on interrupt 0 (pin 2), or interrupt 1 (pin 3) 
+      attachInterrupt(0, updateEncoder, CHANGE); 
+      attachInterrupt(1, updateEncoder, CHANGE);
+      
+      Wire.begin();
+       pinMode(4 , OUTPUT);
+       digitalWrite(4, HIGH); // this turns on the HIH3610
+       delay(5000);
+    }
+     
+    void loop()
+    {
+      // Display Temperature in C
+      byte _status;
+      unsigned int H_dat, T_dat;
+      int RH, T_C, T_F;
+      _status = fetch_humidity_temperature(&H_dat, &T_dat);
+       RH = H_dat * 6.10e-3;
+       T_C = T_dat * 1.007e-2 - 40.0;
+       T_F = T_C* 9.0 / 5.0 + 32.0;
+      
+      //int tempReading = analogRead(tempPin);
+      //float tempVolts = tempReading * 5.0 / 1024.0;
+      //float tempC = (tempVolts - 0.5) * 100.0;
+      //int tempF = tempC * 9.0 / 5.0 + 32.0;
+      //         ----------------
+      
+      lcd.setCursor(0, 0);
+      lcd.print("Temp    F  ");
+      lcd.setCursor(5, 0);
+      lcd.print(T_F);
+      
+      //lcd.setCursor(10,0);
+      //lcd.print ("T_F ");
+      //lcd.setCursor (14,0);
+      //lcd.print (T_F);
+      
+      lcd.setCursor (0,3);
+      lcd.print ("Humidity    %");
+      lcd.setCursor (9,3);
+      lcd.print (RH);
+      
+      // Display Light on second row
+      int lightReading = analogRead(lightPin);
+      lcd.setCursor(0, 2);
+      //         ----------------
+      lcd.print("Light           ");  
+      lcd.setCursor(6, 2);
+      lcd.print(lightReading);
+      delay(500);
+      
+      //Display Display Set Temperaure in F
+      int setTemp =encoderValue;
+      lcd.setCursor(0, 1);
+      //
+      lcd.print("Set Temp    F");
+      lcd.setCursor(9, 1);
+      lcd.print(setTemp);
+      delay(1000);
+      if (T_F < setTemp)
+      {
       myservo.write(90);
-  }
-  else 
-  {
+      }
+      else 
+      {
       myservo.write(5);
-  }
-}
-
-byte fetch_humidity_temperature(unsigned int *p_H_dat, unsigned int *p_T_dat)
-{
+      }
+    }
+    
+    byte fetch_humidity_temperature(unsigned int *p_H_dat, unsigned int *p_T_dat)
+    {
       byte address, Hum_H, Hum_L, Temp_H, Temp_L, _status;
       unsigned int H_dat, T_dat;
       address = 0x27;;
@@ -202,20 +202,20 @@ byte fetch_humidity_temperature(unsigned int *p_H_dat, unsigned int *p_T_dat)
       *p_H_dat = H_dat;
       *p_T_dat = T_dat;
       return(_status);
-}
-
-void updateEncoder(){
-  int MSB = digitalRead(encoderPin1); //MSB = most significant bit
-  int LSB = digitalRead(encoderPin2); //LSB = least significant bit
-
-  int encoded = (MSB << 1) |LSB; //converting the 2 pin value to single number
-  int sum  = (lastEncoded << 2) | encoded; //adding it to the previous encoded value
-
-  if(sum == 0b1101) encoderValue --;
-  if(sum == 0b1110) encoderValue ++;
-
-  lastEncoded = encoded; //store this value for next time
-}
+    }
+    
+    void updateEncoder(){
+      int MSB = digitalRead(encoderPin1); //MSB = most significant bit
+      int LSB = digitalRead(encoderPin2); //LSB = least significant bit
+    
+      int encoded = (MSB << 1) |LSB; //converting the 2 pin value to single number
+      int sum  = (lastEncoded << 2) | encoded; //adding it to the previous encoded value
+    
+      if(sum == 0b1101) encoderValue --;
+      if(sum == 0b1110) encoderValue ++;
+    
+      lastEncoded = encoded; //store this value for next time
+    }
   
   Schematic:
   ![Schematic](https://cloud.githubusercontent.com/assets/8839851/5417192/e8e12df2-81f3-11e4-8f3a-b3058138c094.png)
