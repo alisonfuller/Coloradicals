@@ -1,5 +1,6 @@
 Coloradicals
 ===========
+![Team](https://cloud.githubusercontent.com/assets/8839851/5417617/61db715a-81f8-11e4-8228-b72a94213421.jpg)
 # Abstract
 
 The problem that we have been working to solve is that there are small farmers, such as our client Andre Houssney, that have to regulate the temperature in their greenhouses. Andre has to manually open and close his vents in order to control the temperature inside by allowing air to escape or enter the greenhouse. Andre has many tasks he has to do every day on his farm, and monitoring the temperature in his greenhouse and guessing when to open and close his vents is a task he would like to not have to worry about. We have made a solution to Andre’s problem, that could also be applied to other farms’ greenhouses to regulate the temperatures within the greenhouse. Our product is a device that reads the temperature within the greenhouse and will automatically open and close the vents to regulate the temperature. The user can set what temperature that they would like the greenhouse to stay at by adjusting the knob on the control panel, and the device will use a motor attached to the vent to open and close the vents. Our product is intended to automatically regulate the temperature within the greenhouse without any work to be done by the user.
