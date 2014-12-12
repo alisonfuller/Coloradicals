@@ -58,7 +58,7 @@ The problem that we have been working to solve is that there are small farmers, 
 | Knob                          	| $2.95  	|
 | Arduino Pro Mini              	| $9.95  	|
 | Solder-able Breadboard        	| $4.95  	|
-| 4x 9V Batteries               	|        	|
+| 4x 9V Batteries               	| $15.49  |
 
 Total: $138.36  
  
