@@ -22,13 +22,13 @@ Overview of Process
     
 # Final Design
 
- ## Description
+## Description
 
   The final design of our project consists of a plastic vent with a servo attachment that directly attaches to an LCD interface. The vent was modified in order to fulfill our clients’ dimensions. A temperature and humidity sensor is present inside the LCD box as well as a light sensor that peeks out the sides. The box LCD interface is easily mounted onto any structure that our client desires, but needs to be in close proximity to the vent. 
   The LCD screen displays four different items, current temperature, set temperature, humidity, and light. The set temperature on the LCD screen is altered by the user to turning a knob on the box to the desired temperature parameter. If the temperature of the Greenhouse falls below the user inputted temperature, the blinds close. If the temperature lies above the inputted temperature then the blinds will open. The servomotor is attached to the vent by a metal arm that allows for the blinds to open and close based on the parameter that is given. 
   Our circuit is encased in the box that also holds the LCD screen. Our power source is two 9-volt batteries. One of the batteries powers the arduino and sensors while the other one controls the servomotor and LCD screen. The batteries are easily accessed within the box and can be changed by our client as needed.
 
-  ## Manufacturing
+## Manufacturing
   
   The project was mainly code and circuiting intensive though other parts of our system needed to be altered. The plastic vents were altered from 48 inches long and 20 inches wide to 25 inches long by 20 inches wide. We also   needed to manufacture a metal arm that allowed the servo to open and close as the parameters change. 
   As far as the circuiting of the project, there were many challenges faced. Our circuit needed a lot of troubleshooting in order to make sure that there was not power where power shouldn’t be. There were capacitors, transistors, regulators, temperature, humidity, and light sensors, an LCD screen, as well as a servomotor attached to a single solder-able breadboard. 
