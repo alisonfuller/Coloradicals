@@ -217,7 +217,9 @@ Remaining  $236.64
     
       lastEncoded = encoded; //store this value for next time
     }
-  
+
+## Circuit:
+![Board](https://cloud.githubusercontent.com/assets/8839851/5418035/42547774-81fc-11e4-9f24-ffba98a53fe8.JPG)
 ## Schematic:
   ![Schematic](https://cloud.githubusercontent.com/assets/8839851/5417192/e8e12df2-81f3-11e4-8f3a-b3058138c094.png)
   
