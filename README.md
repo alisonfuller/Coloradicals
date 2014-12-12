@@ -73,6 +73,7 @@ Appendix
   Code:
   
   Schematic:
+  ![Schematic](https://cloud.githubusercontent.com/assets/8839851/5417192/e8e12df2-81f3-11e4-8f3a-b3058138c094.png)
   
   CAD Drawings:
   
